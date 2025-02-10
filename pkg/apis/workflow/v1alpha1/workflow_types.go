@@ -2379,6 +2379,13 @@ func (n NodeStatus) HasChild(childID string) bool {
 	return false
 }
 
+type AddressingStyle string
+
+const (
+	VirtualHost AddressingStyle = "VirtualHost"
+	Path        AddressingStyle = "Path"
+)
+
 // S3Bucket contains the access information required for interfacing with an S3 bucket
 type S3Bucket struct {
 	// Endpoint is the hostname of the bucket endpoint
@@ -2409,6 +2416,8 @@ type S3Bucket struct {
 	CreateBucketIfNotPresent *CreateS3BucketOptions `json:"createBucketIfNotPresent,omitempty" protobuf:"bytes,9,opt,name=createBucketIfNotPresent"`
 
 	EncryptionOptions *S3EncryptionOptions `json:"encryptionOptions,omitempty" protobuf:"bytes,10,opt,name=encryptionOptions"`
+
+	AddressingStyle AddressingStyle `json:"addressingStyle,omitempty" protobuf:"bytes,11,opt,name=addressingStyle"`
 }
 
 // S3EncryptionOptions used to determine encryption options during s3 operations
